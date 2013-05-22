@@ -8,7 +8,7 @@ namespace Dojo1.Tests
 {
     [TestFixture]
     public class MoneyWriterTests
-    {
+    {        
         [TestCase(1, "Um real")]
         [TestCase(2, "Dois reais")]
         [TestCase(3, "Três reais")]
@@ -26,19 +26,21 @@ namespace Dojo1.Tests
             Assert.That(porextenso, Is.EqualTo(extenso));
         }
 
-        //List<int> numeros = new List<int>() { "", 2, 3, 4, 5, 6, 7, 8, 9 };
+        [Test]
+        public void DeveLancarExcecaoParaZero()
+        {
+            MoneyWriter writer = new MoneyWriter();
+            Assert.Throws<ArgumentException>(() => writer.RetornaValorPorExtenso(0));
+        }
 
-        //[Test]
-        //public void Para_Numeros_De_10_A_20_Deve_Retornar_Por_Extenso()
-        //{
-        //    foreach (var item in numeros)
-        //    {
-        //        MoneyWriter writer = new MoneyWriter();
-        //        string porextenso = writer.RetornaValorPorExtenso(item);
-        //        Assert.That(porextenso, );
-        //    }
-        //}
 
-        //Control + U + U Roda Tudo os Testes
+        [Test]
+        public void ReconheceValoresNegativos()
+        {
+            MoneyWriter writer = new MoneyWriter();
+            string porextenso = writer.RetornaValorPorExtenso(-2);
+
+            Assert.That(porextenso, Is.EqualTo("Menos Dois reais"));
+        }
     }
 }

@@ -9,43 +9,34 @@ namespace Dojo1
     {
         private string extenso;
 
+        private Dictionary<int, string> meuDicionario = new Dictionary<int, string>()
+            {
+                {1, "Um"},
+                {2, "Dois"},
+                {3, "Três"},
+                {4, "Quatro"},
+                {5, "Cinco"},
+                {6, "Seis"},
+                {7, "Sete"},
+                {8, "Oito"},
+                {9, "Nove"}
+            };
+
         public string RetornaValorPorExtenso(int p)
         {
-            extenso = p > 1 ? "reais" : "real";
-            string valor = string.Empty;
+            if (p == 0)
+                throw new ArgumentException("Valor não pode ser zero");
 
-            switch (p)
+            var prefixo = "";
+            if (p < 0)
             {
-                case 1:
-                    valor = "Um";
-                    break;
-                case 2:
-                    valor = "Dois";
-                    break;
-                case 3:
-                    valor = "Três";
-                    break;
-                case 4:
-                    valor = "Quatro";
-                    break;
-                case 5:
-                    valor = "Cinco";
-                    break;
-                case 6:
-                    valor = "Seis";
-                    break;
-                case 7:
-                    valor = "Sete";
-                    break;
-                case 8:
-                    valor = "Oito";
-                    break;
-                case 9:
-                    valor = "Nove";
-                    break;
+                prefixo = "Menos ";
+                p = p * -1;
             }
+            extenso = p > 1 ? "reais" : "real";
+            string valor = meuDicionario[p];
 
-            return string.Format("{0} {1}", valor, extenso);
+            return string.Format("{0}{1} {2}", prefixo, valor, extenso);
         }
     }
 }
