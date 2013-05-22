@@ -19,12 +19,21 @@ namespace Dojo1.Tests
         }
 
         [Test]
-        public void Para_2_Deve_Retornar_Dois_Real()
+        public void Para_2_Deve_Retornar_Dois_Reais()
         {
             MoneyWriter writer = new MoneyWriter();
             string porextenso = writer.RetornaValorPorExtenso(2);
 
             Assert.That(porextenso, Is.EqualTo("Dois reais"));
+        }
+
+        [Test]
+        public void Para_3_Deve_Retornar_Tres_Reais()
+        {
+            MoneyWriter writer = new MoneyWriter();
+            string porextenso = writer.RetornaValorPorExtenso(3);
+
+            Assert.That(porextenso, Is.EqualTo("Três reais"));
         }
     }
 }

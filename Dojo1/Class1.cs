@@ -7,9 +7,21 @@ namespace Dojo1
 {
     public class MoneyWriter
     {
+
         public string RetornaValorPorExtenso(int p)
         {
-            return p == 1 ? "Um real" : "Dois reais";
+            if (p == 1)
+            {
+                return "Um real";
+            }
+            else if (p == 2)
+            {
+                return "Dois reais";
+            }
+            else
+            {
+                return "Três reais";
+            }
         }
     }
 }
