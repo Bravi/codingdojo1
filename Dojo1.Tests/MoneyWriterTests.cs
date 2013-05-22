@@ -28,6 +28,7 @@ namespace Dojo1.Tests
         }
 
         [Test]
+        [TestCase(1)]
         public void Para_3_Deve_Retornar_Tres_Reais()
         {
             MoneyWriter writer = new MoneyWriter();
@@ -35,5 +36,7 @@ namespace Dojo1.Tests
 
             Assert.That(porextenso, Is.EqualTo("Três reais"));
         }
+
+        //Control + U + U Roda Tudo os Testes
     }
 }

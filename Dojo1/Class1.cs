@@ -7,21 +7,27 @@ namespace Dojo1
 {
     public class MoneyWriter
     {
+        private string extenso;
 
         public string RetornaValorPorExtenso(int p)
         {
-            if (p == 1)
+            extenso = p > 1 ? "reais" : "real";
+            string valor = string.Empty;
+
+            switch (p)
             {
-                return "Um real";
+                case 1:
+                    valor = "Um";
+                    break;
+                case 2:
+                    valor = "Dois";
+                    break;
+                case 3:
+                    valor = "Três";
+                    break;
             }
-            else if (p == 2)
-            {
-                return "Dois reais";
-            }
-            else
-            {
-                return "Três reais";
-            }
+
+            return string.Format("{0} {1}", valor, extenso);
         }
     }
 }
