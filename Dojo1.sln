@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojo1", "Dojo1\Dojo1.csproj", "{469158A0-9521-4399-A6BF-1C641E6171D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojo1.Tests", "Dojo1.Tests\Dojo1.Tests.csproj", "{6032712A-CF21-40AA-AD84-025E628B2398}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{469158A0-9521-4399-A6BF-1C641E6171D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469158A0-9521-4399-A6BF-1C641E6171D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469158A0-9521-4399-A6BF-1C641E6171D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469158A0-9521-4399-A6BF-1C641E6171D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6032712A-CF21-40AA-AD84-025E628B2398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6032712A-CF21-40AA-AD84-025E628B2398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6032712A-CF21-40AA-AD84-025E628B2398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6032712A-CF21-40AA-AD84-025E628B2398}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

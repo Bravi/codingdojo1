@@ -1,0 +1,9 @@
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\bin\Debug\Dojo1.Tests.dll
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\bin\Debug\Dojo1.Tests.pdb
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\bin\Debug\Dojo1.dll
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\bin\Debug\nunit.framework.dll
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\bin\Debug\Dojo1.pdb
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\bin\Debug\nunit.framework.xml
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\obj\Debug\Dojo1.Tests.csprojResolveAssemblyReference.cache
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\obj\Debug\Dojo1.Tests.dll
+C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1.Tests\obj\Debug\Dojo1.Tests.pdb
