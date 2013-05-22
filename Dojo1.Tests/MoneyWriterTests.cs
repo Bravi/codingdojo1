@@ -26,6 +26,19 @@ namespace Dojo1.Tests
             Assert.That(porextenso, Is.EqualTo(extenso));
         }
 
+        //List<int> numeros = new List<int>() { "", 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        //[Test]
+        //public void Para_Numeros_De_10_A_20_Deve_Retornar_Por_Extenso()
+        //{
+        //    foreach (var item in numeros)
+        //    {
+        //        MoneyWriter writer = new MoneyWriter();
+        //        string porextenso = writer.RetornaValorPorExtenso(item);
+        //        Assert.That(porextenso, );
+        //    }
+        //}
+
         //Control + U + U Roda Tudo os Testes
     }
 }
