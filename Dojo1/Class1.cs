@@ -25,6 +25,24 @@ namespace Dojo1
                 case 3:
                     valor = "Três";
                     break;
+                case 4:
+                    valor = "Quatro";
+                    break;
+                case 5:
+                    valor = "Cinco";
+                    break;
+                case 6:
+                    valor = "Seis";
+                    break;
+                case 7:
+                    valor = "Sete";
+                    break;
+                case 8:
+                    valor = "Oito";
+                    break;
+                case 9:
+                    valor = "Nove";
+                    break;
             }
 
             return string.Format("{0} {1}", valor, extenso);

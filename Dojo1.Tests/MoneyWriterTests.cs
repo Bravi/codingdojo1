@@ -9,32 +9,21 @@ namespace Dojo1.Tests
     [TestFixture]
     public class MoneyWriterTests
     {
-        [Test]
-        public void Para_1_Deve_Retornar_Um_Real()
+        [TestCase(1, "Um real")]
+        [TestCase(2, "Dois reais")]
+        [TestCase(3, "Três reais")]
+        [TestCase(4, "Quatro reais")]
+        [TestCase(5, "Cinco reais")]
+        [TestCase(6, "Seis reais")]
+        [TestCase(7, "Sete reais")]
+        [TestCase(8, "Oito reais")]
+        [TestCase(9, "Nove reais")]
+        public void Para_Numeros_Inteiros_Deve_Retornar_Por_Extenso(int valor, string extenso)
         {
             MoneyWriter writer = new MoneyWriter();
-            string porextenso = writer.RetornaValorPorExtenso(1);
+            string porextenso = writer.RetornaValorPorExtenso(valor);
 
-            Assert.That(porextenso, Is.EqualTo("Um real"));
-        }
-
-        [Test]
-        public void Para_2_Deve_Retornar_Dois_Reais()
-        {
-            MoneyWriter writer = new MoneyWriter();
-            string porextenso = writer.RetornaValorPorExtenso(2);
-
-            Assert.That(porextenso, Is.EqualTo("Dois reais"));
-        }
-
-        [Test]
-        [TestCase(1)]
-        public void Para_3_Deve_Retornar_Tres_Reais()
-        {
-            MoneyWriter writer = new MoneyWriter();
-            string porextenso = writer.RetornaValorPorExtenso(3);
-
-            Assert.That(porextenso, Is.EqualTo("Três reais"));
+            Assert.That(porextenso, Is.EqualTo(extenso));
         }
 
         //Control + U + U Roda Tudo os Testes
