@@ -8,7 +8,15 @@ namespace Dojo1.Tests
 {
     [TestFixture]
     public class MoneyWriterTests
-    {        
+    {
+        private MoneyWriter writer;
+
+        [SetUp]
+        public void Setup()
+        {
+            writer = new MoneyWriter();
+        }
+
         [TestCase(1, "Um real")]
         [TestCase(2, "Dois reais")]
         [TestCase(3, "Três reais")]
@@ -20,7 +28,6 @@ namespace Dojo1.Tests
         [TestCase(9, "Nove reais")]
         public void Para_Numeros_Inteiros_Deve_Retornar_Por_Extenso(int valor, string extenso)
         {
-            MoneyWriter writer = new MoneyWriter();
             string porextenso = writer.RetornaValorPorExtenso(valor);
 
             Assert.That(porextenso, Is.EqualTo(extenso));
@@ -29,15 +36,13 @@ namespace Dojo1.Tests
         [Test]
         public void DeveLancarExcecaoParaZero()
         {
-            MoneyWriter writer = new MoneyWriter();
             Assert.Throws<ArgumentException>(() => writer.RetornaValorPorExtenso(0));
         }
 
 
         [Test]
-        public void ReconheceValoresNegativos()
+        public void Para_Valores_Negativos_Coloca_Prefixo_Menos()
         {
-            MoneyWriter writer = new MoneyWriter();
             string porextenso = writer.RetornaValorPorExtenso(-2);
 
             Assert.That(porextenso, Is.EqualTo("Menos Dois reais"));
