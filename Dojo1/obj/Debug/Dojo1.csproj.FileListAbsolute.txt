@@ -1,5 +1,0 @@
-C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1\bin\Debug\Dojo1.dll
-C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1\bin\Debug\Dojo1.pdb
-C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1\obj\Debug\Dojo1.dll
-C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1\obj\Debug\Dojo1.pdb
-C:\Users\h4l2\Documents\DropBox\Code\Dojo1\Dojo1\obj\Debug\Dojo1.csprojResolveAssemblyReference.cache
