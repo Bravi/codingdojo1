@@ -7,10 +7,7 @@ namespace Dojo1
 {
     public class MoneyWriter
     {
-        private string obterExtensoPelaQuantidade(int quantidade)
-        {
-            return quantidade > 1 ? "reais" : "real";
-        }
+        private string prefixo;
 
         private Dictionary<int, string> numeroUnicos = new Dictionary<int, string>()
             {
@@ -58,16 +55,25 @@ namespace Dojo1
             if (quantidade == 0)
                 throw new ArgumentException("Valor não pode ser zero");
 
-            var prefixo = "";
-            if (quantidade < 0)
-            {
-                prefixo = "Menos ";
-                quantidade = quantidade * -1;
-            }
+            TratarQuantidadeNegativa(ref quantidade, ref prefixo);
 
             string valor = numeroUnicos[quantidade];
 
-            return string.Format("{0}{1} {2}", prefixo, valor, obterExtensoPelaQuantidade(quantidade));
+            return string.Format("{0}{1} {2}", prefixo, valor, ObterExtensoPelaQuantidade(quantidade));
+        }
+
+        private string ObterExtensoPelaQuantidade(int quantidade)
+        {
+            return quantidade > 1 ? "reais" : "real";
+        }
+
+        private void TratarQuantidadeNegativa(ref int quantidade, ref string prefixo)
+        {
+            if (quantidade < 0)
+            {
+                prefixo = "Menos ";
+                quantidade = Math.Abs(quantidade);
+            }
         }
     }
 }
