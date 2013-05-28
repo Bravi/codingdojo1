@@ -7,7 +7,10 @@ namespace Dojo1
 {
     public class MoneyWriter
     {
-        private string extenso;
+        private string obterExtensoPelaQuantidade(int quantidade)
+        {
+            return quantidade > 1 ? "reais" : "real";
+        }
 
         private Dictionary<int, string> numeroUnicos = new Dictionary<int, string>()
             {
@@ -50,21 +53,21 @@ namespace Dojo1
                 {1000,"Mil"}
             };
 
-        public string RetornaValorPorExtenso(int p)
+        public string RetornaValorPorExtenso(int quantidade)
         {
-            if (p == 0)
+            if (quantidade == 0)
                 throw new ArgumentException("Valor não pode ser zero");
 
             var prefixo = "";
-            if (p < 0)
+            if (quantidade < 0)
             {
                 prefixo = "Menos ";
-                p = p * -1;
+                quantidade = quantidade * -1;
             }
-            extenso = p > 1 ? "reais" : "real";
-            string valor = numeroUnicos[p];
 
-            return string.Format("{0}{1} {2}", prefixo, valor, extenso);
+            string valor = numeroUnicos[quantidade];
+
+            return string.Format("{0}{1} {2}", prefixo, valor, obterExtensoPelaQuantidade(quantidade));
         }
     }
 }
