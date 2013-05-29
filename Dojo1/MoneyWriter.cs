@@ -55,11 +55,55 @@ namespace Dojo1
             if (quantidade == 0)
                 throw new ArgumentException("Valor não pode ser zero");
 
+            quantidadeTotal = quantidade;
+
             TratarQuantidadeNegativa(ref quantidade, ref prefixo);
 
-            string valor = numeroUnicos[quantidade];
+            string valor = ObterValorPelaQuantidade(quantidade);
 
-            return string.Format("{0}{1} {2}", prefixo, valor, ObterExtensoPelaQuantidade(quantidade));
+            return Capitalise(string.Format("{0}{1} {2}", prefixo, valor, ObterExtensoPelaQuantidade(quantidade)));
+        }
+
+        private int quantidadeTotal;
+        private string ObterValorPelaQuantidade(int quantidade)
+        {
+            string valor;
+            if (numeroUnicos.TryGetValue(quantidade, out valor))
+                return valor;
+
+            if (quantidade > 20 && quantidade < 100)
+            {
+                return string.Format("{0} e {1}",
+                    ObterValorPelaQuantidade((int)(quantidade / 10) * 10),
+                    ObterValorPelaQuantidade(quantidade % 10));
+            }
+
+            if (quantidade > 100 && quantidade < 200)
+            {
+                return string.Format("Cento e {0}",
+                    ObterValorPelaQuantidade(RetornarParteDecimal(quantidade)));
+            }
+
+            if (quantidade > 200 && quantidade < 1000)
+            {
+                return string.Format("{0} e {1}",
+                    ObterValorPelaQuantidade(RetornarParteCentena(quantidade)),
+                    ObterValorPelaQuantidade(RetornarParteDecimal(quantidade)));
+            }
+
+            throw new ArgumentException(quantidade.ToString(), "quantidade");
+        }
+
+        private int RetornarParteCentena(int quantidade)
+        {
+            return Convert.ToInt32((quantidade / 100) * 100);
+        }
+
+        private int RetornarParteDecimal(int quantidade)
+        {
+            var auxQtde = Convert.ToDecimal(quantidade) / Convert.ToDecimal(100);
+            var result = Convert.ToInt32(((auxQtde - Math.Truncate(auxQtde)) * 100));
+            return Math.Abs(result);
         }
 
         private string ObterExtensoPelaQuantidade(int quantidade)
@@ -74,6 +118,13 @@ namespace Dojo1
                 prefixo = "Menos ";
                 quantidade = Math.Abs(quantidade);
             }
+        }
+
+        private string Capitalise(string str)
+        {
+            if (String.IsNullOrEmpty(str))
+                return String.Empty;
+            return Char.ToUpper(str[0]) + str.Substring(1).ToLower();
         }
     }
 }

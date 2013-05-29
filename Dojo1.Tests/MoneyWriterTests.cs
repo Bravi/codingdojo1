@@ -51,6 +51,41 @@ namespace Dojo1.Tests
                 new object[] { 1000 , "Mil reais" }
             };
 
+        private object[] dinheiroNumerosNaoUnicos =
+            {
+                new object[] { 21, "Vinte e um reais" },
+                new object[] { 29, "Vinte e nove reais" },
+                new object[] { 31, "Trinta e um reais" },
+                new object[] { 39, "Trinta e nove reais" },
+                new object[] { 41, "Quarenta e um reais" },
+                new object[] { 49, "Quarenta e nove reais" },
+                new object[] { 51, "Cinquenta e um reais" },
+                new object[] { 59, "Cinquenta e nove reais" },
+                new object[] { 61, "Sessenta e um reais" },
+                new object[] { 69, "Sessenta e nove reais" },
+                new object[] { 71, "Setenta e um reais" },
+                new object[] { 79, "Setenta e nove reais" },
+                new object[] { 81, "Oitenta e um reais" },
+                new object[] { 89, "Oitenta e nove reais" },
+                new object[] { 91, "Noventa e um reais" },
+                new object[] { 99, "Noventa e nove reais" },
+                new object[] { 101, "Cento e um reais" },
+                new object[] { 102, "Cento e dois reais" },
+                new object[] { 110, "Cento e dez reais" },
+                new object[] { 111, "Cento e onze reais" },
+                new object[] { 122, "Cento e vinte e dois reais" },
+                new object[] { 123, "Cento e vinte e três reais" },
+                new object[] { 134, "Cento e trinta e quatro reais" },
+                new object[] { 245, "Duzentos e quarenta e cinco reais" },
+                new object[] { 356 , "Trezentos e cinquenta e seis reais" },
+                new object[] { 467 , "Quatrocentos e sessenta e sete reais" },
+                new object[] { 578 , "Quinhentos e setenta e oito reais" },
+                new object[] { 689 , "Seiscentos e oitenta e nove reais" },
+                new object[] { 701 , "Setecentos e um reais" },
+                new object[] { 823 , "Oitocentos e vinte e três reais" },
+                new object[] { 999 , "Novecentos e noventa e nove reais" }
+            };
+
 
         [SetUp]
         public void Setup()
@@ -66,19 +101,26 @@ namespace Dojo1.Tests
             Assert.That(porextenso, Is.EqualTo(extenso));
         }
 
+        [TestCaseSource("dinheiroNumerosNaoUnicos")]
+        public void Para_Numeros_Nao_Unicos_Retornar_Valor_Por_Extenso(int valor, string extenso)
+        {
+            string porextenso = writer.RetornaValorPorExtenso(valor);
+
+            Assert.That(porextenso, Is.EqualTo(extenso));
+        }
+
         [Test]
         public void DeveLancarExcecaoParaZero()
         {
             Assert.Throws<ArgumentException>(() => writer.RetornaValorPorExtenso(0));
         }
 
-
         [Test]
         public void Para_Valores_Negativos_Coloca_Prefixo_Menos()
         {
             string porextenso = writer.RetornaValorPorExtenso(-2);
 
-            Assert.That(porextenso, Is.EqualTo("Menos Dois reais"));
+            Assert.That(porextenso, Is.EqualTo("Menos dois reais"));
         }
     }
 }
