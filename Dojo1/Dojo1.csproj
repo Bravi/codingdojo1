@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MoneyWriter.cs" />
+    <Compile Include="ConversorNumericoParaExtenso.cs" />
+    <Compile Include="ConversorMonetarioParaExtenso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

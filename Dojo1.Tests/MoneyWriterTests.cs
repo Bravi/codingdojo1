@@ -9,7 +9,7 @@ namespace Dojo1.Tests
     [TestFixture]
     public class MoneyWriterTests
     {
-        private MoneyWriter writer;
+        private ConversorMonetarioParaExtenso writer;
         private object[] dinheiroNumerosUnicos =
             {
                 new object[] { 1, "Um real" },
@@ -90,7 +90,7 @@ namespace Dojo1.Tests
         [SetUp]
         public void Setup()
         {
-            writer = new MoneyWriter();
+            writer = new ConversorMonetarioParaExtenso(new ConversorNumericoParaExtenso());
         }
 
         [TestCaseSource("dinheiroNumerosUnicos")]

@@ -5,10 +5,8 @@ using System.Text;
 
 namespace Dojo1
 {
-    public class MoneyWriter
+    public class ConversorNumericoParaExtenso
     {
-        private string prefixo;
-
         private Dictionary<int, string> numeroUnicos = new Dictionary<int, string>()
             {
                 {1, "Um"},
@@ -50,22 +48,7 @@ namespace Dojo1
                 {1000,"Mil"}
             };
 
-        public string RetornaValorPorExtenso(int quantidade)
-        {
-            if (quantidade == 0)
-                throw new ArgumentException("Valor não pode ser zero");
-
-            quantidadeTotal = quantidade;
-
-            TratarQuantidadeNegativa(ref quantidade, ref prefixo);
-
-            string valor = ObterValorPelaQuantidade(quantidade);
-
-            return Capitalise(string.Format("{0}{1} {2}", prefixo, valor, ObterExtensoPelaQuantidade(quantidade)));
-        }
-
-        private int quantidadeTotal;
-        private string ObterValorPelaQuantidade(int quantidade)
+        public string ObterValorPelaQuantidade(int quantidade)
         {
             string valor;
             if (numeroUnicos.TryGetValue(quantidade, out valor))
@@ -81,50 +64,44 @@ namespace Dojo1
             if (quantidade > 100 && quantidade < 200)
             {
                 return string.Format("Cento e {0}",
-                    ObterValorPelaQuantidade(RetornarParteDecimal(quantidade)));
+                    ObterValorPelaQuantidade(RetornarParteDezena(quantidade)));
             }
 
             if (quantidade > 200 && quantidade < 1000)
             {
                 return string.Format("{0} e {1}",
                     ObterValorPelaQuantidade(RetornarParteCentena(quantidade)),
-                    ObterValorPelaQuantidade(RetornarParteDecimal(quantidade)));
+                    ObterValorPelaQuantidade(RetornarParteDezena(quantidade)));
             }
 
             throw new ArgumentException(quantidade.ToString(), "quantidade");
         }
 
-        private int RetornarParteCentena(int quantidade)
+        private double ConverterParaBase100(int quantidade)
         {
-            return Convert.ToInt32((quantidade / 100) * 100);
+            return Convert.ToDouble(quantidade) / 100.0;
         }
 
-        private int RetornarParteDecimal(int quantidade)
+        private int RetornarParteCentena(int quantidade)
         {
-            var auxQtde = Convert.ToDecimal(quantidade) / Convert.ToDecimal(100);
-            var result = Convert.ToInt32(((auxQtde - Math.Truncate(auxQtde)) * 100));
+            return (int)Math.Truncate(ConverterParaBase100(quantidade)) * 100;
+        }
+
+        private int RetornarParteDezena(int quantidade)
+        {
+            var auxQtde = ConverterParaBase100(quantidade);
+            var result = Convert.ToInt32((auxQtde - Math.Floor(auxQtde)) * 100);
             return Math.Abs(result);
         }
 
-        private string ObterExtensoPelaQuantidade(int quantidade)
+        public void TratarQuantidadeNegativa(ref int quantidade, out string prefixo)
         {
-            return quantidade > 1 ? "reais" : "real";
-        }
-
-        private void TratarQuantidadeNegativa(ref int quantidade, ref string prefixo)
-        {
+            prefixo = string.Empty;
             if (quantidade < 0)
             {
                 prefixo = "Menos ";
                 quantidade = Math.Abs(quantidade);
             }
-        }
-
-        private string Capitalise(string str)
-        {
-            if (String.IsNullOrEmpty(str))
-                return String.Empty;
-            return Char.ToUpper(str[0]) + str.Substring(1).ToLower();
         }
     }
 }
